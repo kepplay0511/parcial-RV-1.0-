@@ -16,13 +16,15 @@ public class player : MonoBehaviour
 
     public float side_speed;
     public float running_speed;
+    public float aumentoDeVelocidad = 0.1f; // Porcentaje de aumento de velocidad
 
 
 
-  
 
 
-    
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +99,16 @@ public class player : MonoBehaviour
         
 
 
-    }    
-    
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("barraEnergetica"))
+        {
+            Destroy(other.gameObject); // Destruye el objeto que ha colisionado
+
+            // Aumenta la velocidad del jugador
+            running_speed *= (1 + aumentoDeVelocidad); // Aumento de velocidad en un 10%
+        }
+    }
+
 }
