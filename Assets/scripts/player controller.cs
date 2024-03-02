@@ -29,19 +29,17 @@ public class player : MonoBehaviour
     void Start()
     {
         currunt_pos = 0;  // 0 = center, 1 =  left , 2 =  right,
-        currunt_pos = 0;
-        rb = GetComponent<Rigidbody>(); // Obtener el componente Rigidbody del GameObject
-        rb.useGravity = true; // Activar la gravedad en el Rigidbody
+       
+       
         currentSpeed = baseSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(Vector3.down * Physics.gravity.y * Time.deltaTime);
+        
 
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + running_speed * Time.deltaTime);
-
 
 
         if (currunt_pos == 0)
@@ -104,14 +102,7 @@ public class player : MonoBehaviour
             rb.AddForce(Vector3.up * jump_Force);
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) // Reemplaza "E" por la tecla de interacci�n
-        {
-            currentSpeed *= (1f + speedIncrease); // Aumenta la velocidad en un 10%
-        }
-    }
-    public float GetCurrentSpeed()
-    {
-        return currentSpeed;
-    }
 
+    }    
+    
 }
