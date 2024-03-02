@@ -8,7 +8,7 @@ public class player : MonoBehaviour
     [SerializeField] Transform center;
     [SerializeField] Transform left;
     [SerializeField] Transform right;
-
+    [SerializeField] Rigidbody rb;
 
 
     int currunt_pos = 0 ;
@@ -16,22 +16,19 @@ public class player : MonoBehaviour
 
     public float side_speed;
     public float running_speed;
-    public float jump_Force;
-    public float baseSpeed = 10f; // Velocidad base del personaje
-    public float speedIncrease = 0.1f; // Aumento de velocidad al tocar un objeto (10%)
-
-    private float currentSpeed; // Velocidad actual del personaje
 
 
-    [SerializeField] Rigidbody rb;
+
+  
+
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         currunt_pos = 0;  // 0 = center, 1 =  left , 2 =  right,
        
-       
-        currentSpeed = baseSpeed;
     }
 
     // Update is called once per frame
@@ -97,10 +94,7 @@ public class player : MonoBehaviour
             transform.Translate(dir.normalized * side_speed * Time.deltaTime, Space.World);
                   }  
         }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * jump_Force);
-        }
+        
 
 
     }    
